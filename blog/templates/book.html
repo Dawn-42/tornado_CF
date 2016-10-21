@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% module Entry(book) %}
+     <div><p>这本书的标签:</p></div>
+{% for entry in detail %}
+      <li>
+        <div class="title">{{ entry }},{{  detail[entry] }}</div>
+{#        <div class="date">{{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>#}
+      </li>
+    {% end %}
+
+        <div><p>与这本书相似的书籍推荐：</p></div>
+{% for entry in rec_books %}
+      <li>
+        <div class="title"><a href="/book/{{ entry[0] }}">{{ entry[1]  }},&nbsp&nbsp&nbsp&nbsp&nbsp相似度得分:{{  '%.2f'%entry[2] }}%</a></div>
+{#        <div class="date">{{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>#}
+      </li>
+    {% end %}
+
+<div><p>
+{#  recommend result #}
+
+</p></div>
+  <div><a href="/books">{{ _("back") }}</a></div>
+{% end %}
+

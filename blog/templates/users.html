@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body %}
+ <div><p>用户:</p></div>
+{% for entry in user_names %}
+      <li>
+        <div class="title"><a href="/user/{{ entry['name'] }}">用户:{{ entry['name']}}</a></div>
+{#        <div class="date">{{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>#}
+      </li>
+    {% end %}
+{% end %}

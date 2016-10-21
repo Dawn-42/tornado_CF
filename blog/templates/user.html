@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+ <div><p>该读者读过的书包括:</p></div>
+{% for entry in read_books_title %}
+      <li>
+        <div ><a href="/book/{{ entry}}">{{ read_books_title[entry]['title'] }}</a></div>
+{#        <div class="date">{{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>#}
+      </li>
+    {% end %}
+
+
+     <div><p>适合该读者的书籍推荐:</p></div>
+{% for entry in book_titles %}
+      <li>
+        <div ><a href="/book/{{ entry[0]}}">{{ entry[1]['title'] }}</a></div>
+{#        <div class="date">{{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>#}
+      </li>
+    {% end %}
+
+        <div><p>相似读者：</p></div>
+{% for entry in  neighbor_names %}
+      <li>
+        <div class="title"><a href="/user/{{ entry[0]}}">{{ entry[0] }},&nbsp&nbsp&nbsp&nbsp&nbsp相似度得分:{{  entry[1] }}</a></div>
+{#        <div class="date">{{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>#}
+      </li>
+    {% end %}
+
+<div><p>
+{#  recommend result #}
+
+</p></div>
+  <div><a href="/users">{{ _("back") }}</a></div>
+{% end %}
+

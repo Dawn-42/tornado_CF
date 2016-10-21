@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  {% for entry in entries %}
+    {% module Entry(entry) %}
+  {% end %}
+<div><a href="/users">{{ _("跳转到基于用户评价的推荐") }}</a></div>
+{% end %}
